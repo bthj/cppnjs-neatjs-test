@@ -4,12 +4,18 @@
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="lib/neat-build.js"></script>
         <script src="lib/dygraph-combined.js"></script>
-
+        <style>
+          .member-container { float: left; }
+        </style>
     </head>
     <body>
         <h1>breedesizer</h1>
         <h2></h2>
 
+        <input type="button" class="evolve" value="Evolve" />
+
+        <br />
+        
         <div id="population-container">
 
           <div id="member-container-0" class="member-container">
@@ -90,9 +96,12 @@
 
         </div>
 
+        <br clear="both"/>
         <br />
 
-        <input type="button" id="evolve" value="Evolve" />
+        <input type="button" class="evolve" value="Evolve" />
+
+        <br /><br /><br />
 
         <script src="main.js"></script>
     </body>

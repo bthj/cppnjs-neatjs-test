@@ -112,7 +112,11 @@ function renderPopulation( populationIndex ) {
       var rangeFraction = j / (numberOfSeries-1);
       var yInputSignal = lerp( -1, 1, rangeFraction );
 
-      var inputSignals = [1, Math.abs(yInputSignal), yInputSignal]; // d(istance), input
+      var extraInput = Math.sin(Math.abs(10*yInputSignal));
+
+      // var inputSignals = [1, Math.abs(yInputSignal), yInputSignal]; // d(istance), input
+      var inputSignals = [Math.abs(yInputSignal), extraInput]; // d(istance), input
+      //var inputSignals = [Math.abs(yInputSignal)]; // d(istance), input
 
       oneMemberCPPN.clearSignals();
       oneMemberCPPN.setInputSignals( inputSignals );
@@ -150,6 +154,11 @@ function evolveNextGeneration() {
     parentIndexes.push( parseInt( $(this).attr("name").substring(7) ) );
   });
 
+  if( parentIndexes.length < 1 ) {
+    alert("At least one parent needs to be selected for the next generation.");
+    return;
+  }
+
   var currentPopulation = populations[currentPopulationIndex];
   var parents = [];
   $.each( parentIndexes, function( oneParentIndex, value ) {
@@ -178,7 +187,7 @@ function evolveNextGeneration() {
 }
 
 $(function() {
-  $("#evolve").click( function() {
+  $(".evolve").click( function() {
 
     evolveNextGeneration();
   });
